@@ -11,44 +11,48 @@ import javax.persistence.ManyToOne;
 @Entity
 public class HealthHistory {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int healthHistoryId;
-	@ManyToOne(cascade=CascadeType.MERGE)
-	@JoinColumn(name="patientId")
-	private Patient user;
-	@ManyToOne(cascade=CascadeType.MERGE)
-	@JoinColumn(name="docId")
-	private HealthProfessional healthProfessionalId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int healthHistoryId;
 
-	public HealthHistory(int healthHistoryId, Patient userId, HealthProfessional healthProfessionalId) {
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "patientId")
+    private Patient patient;
 
-		this.healthHistoryId = healthHistoryId;
-		this.user = userId;
-		this.healthProfessionalId = healthProfessionalId;
-	}
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "docId")
+    private HealthProfessional healthProfessional;
 
-	public int getHealthHistoryId() {
-		return healthHistoryId;
-	}
+    public HealthHistory() {
+    }
 
-	public void setHealthHistoryId(int healthHistoryId) {
-		this.healthHistoryId = healthHistoryId;
-	}
+    public HealthHistory(int healthHistoryId, Patient patient, HealthProfessional healthProfessional) {
+        this.healthHistoryId = healthHistoryId;
+        this.patient = patient;
+        this.healthProfessional = healthProfessional;
+    }
 
-	public User getUserId() {
-		return user;
-	}
+    public int getHealthHistoryId() {
+        return healthHistoryId;
+    }
 
-	public void setUserId(Patient userId) {
-		this.user = userId;
-	}
+    public void setHealthHistoryId(int healthHistoryId) {
+        this.healthHistoryId = healthHistoryId;
+    }
 
-	public HealthProfessional getHealthProfessionalId() {
-		return healthProfessionalId;
-	}
+    public Patient getPatient() {
+        return patient;
+    }
 
-	public void setHealthProfessionalId(HealthProfessional healthProfessionalId) {
-		this.healthProfessionalId = healthProfessionalId;
-	}
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public HealthProfessional getHealthProfessional() {
+        return healthProfessional;
+    }
+
+    public void setHealthProfessional(HealthProfessional healthProfessional) {
+        this.healthProfessional = healthProfessional;
+    }
 }

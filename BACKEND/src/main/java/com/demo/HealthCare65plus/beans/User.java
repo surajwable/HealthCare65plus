@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
     private int userId;
     private String name;
     private String contact;
@@ -23,8 +23,6 @@ public class User {
     private Date dateOfBirth;
     private String email;
     private String password;
-   
-    
    
     public User() {
 		super();

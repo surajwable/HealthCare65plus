@@ -59,4 +59,9 @@ public class UserPrincipal implements UserDetails{
 	public boolean isEnabled() {
 		return true;
 	}
+
+	public int getUserId() {
+		// TODO Auto-generated method stub
+		return user.getUserId();
+	}
 }

@@ -16,8 +16,6 @@ public class Patient extends User
 	 @OneToMany(mappedBy="user",cascade=CascadeType.ALL)
     private List<HealthHistory> records;
 
-	 
-    
 	public Patient() {
 		super();
 	}
@@ -37,7 +35,21 @@ public class Patient extends User
     }
 
 	public Integer getPatientId() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
+	
+	/*
+	 * public Appointment bookAppointment(HealthProfessional healthProfessional,
+	 * ProfCategory category, Date appointmentDate) { Appointment appointment = new
+	 * Appointment(); appointment.setPatient(this);
+	 * appointment.setHealthProfessional(healthProfessional);
+	 * appointment.setCategory(category);
+	 * appointment.setAppointmentDate(appointmentDate);
+	 * 
+	 * // Save the appointment using a service or repository //
+	 * appointmentService.createAppointment(appointment);
+	 * 
+	 * return appointment; }
+	 */
 }

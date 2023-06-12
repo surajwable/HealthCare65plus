@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demo.HealthCare65plus.beans.HealthHistory;
+import com.demo.HealthCare65plus.beans.Patient;
 import com.demo.HealthCare65plus.beans.User;
+import com.demo.HealthCare65plus.service.HealthHistoryService;
 import com.demo.HealthCare65plus.service.UserService;
 
 
@@ -26,6 +29,9 @@ public class UserController {
 
 	@Autowired(required=false)
 	UserService userService;
+	
+	@Autowired
+	HealthHistoryService healthHistoryService;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping("/users")
@@ -80,4 +86,18 @@ public class UserController {
 		}
 		return new ResponseEntity(HttpStatus.NOT_FOUND);
 	}
+	
+	@PostMapping("/users/{userId}/bookAppointment")
+	public ResponseEntity<HealthHistory> bookAppointment(@PathVariable int userId, @RequestBody HealthHistory healthHistory) {
+	    // Check if the user is a patient
+	    User user = userService.getUserById(userId);
+	    if (user instanceof Patient) {
+	        healthHistory.setPatient((Patient) user); // Set the patient for the appointment
+	        HealthHistory bookedAppointment = healthHistoryService.createHealthHistory(healthHistory);
+	        return ResponseEntity.status(HttpStatus.CREATED).body(bookedAppointment);
+	    } else {
+	        return ResponseEntity.badRequest().build(); // Return error response for non-patient users
+	    }
+	}
+
 }

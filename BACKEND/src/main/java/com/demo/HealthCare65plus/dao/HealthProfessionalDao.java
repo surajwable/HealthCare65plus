@@ -6,4 +6,5 @@ import com.demo.HealthCare65plus.beans.HealthProfessional;
 
 public interface HealthProfessionalDao extends JpaRepository<HealthProfessional, Integer>{
 
+	
 }

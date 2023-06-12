@@ -4,18 +4,26 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
 public class ProfCategory {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int catId;
 	private String category;
-	@OneToMany(mappedBy="category",cascade=CascadeType.ALL)
 	
+	@OneToMany(mappedBy="category",cascade=CascadeType.ALL)
 	private List<HealthProfessional> professions;
 	
+	
+	public ProfCategory() {
+		super();
+	}
+
 	public ProfCategory(int catId, String category) {
 		super();
 		this.catId = catId;

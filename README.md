@@ -37,23 +37,18 @@ Overall, HealthCare65plus aims to enhance healthcare management for elderly pati
 Relation between Tables:
 In the HealthCare65plus system, various entities and their relationships are established to store and retrieve data efficiently. The following table relationships are commonly used:
 
-User-Patient Relationship:
-
-The User table and the Patient table have a one-to-one relationship.
+HealthProfessional-Patient Relationship:
+The HealthProfessional table and the Patient table have a many-to-many relationship.
 Each user can have only one patient profile associated with them.
 This relationship allows linking the user's authentication and personal details with their patient-specific information.
 User-HealthProfessional Relationship:
 
-The User table and the HealthProfessional table have a one-to-one relationship.
-Each user can have only one health professional profile associated with them.
-This relationship enables the user to have a separate profile for their role as a healthcare professional, if applicable.
 HealthHistory-Patient Relationship:
-
 The HealthHistory table and the Patient table have a many-to-one relationship.
 Multiple health history records can be associated with a single patient.
 This relationship allows tracking and storing the health history of a patient over time.
-HealthHistory-HealthProfessional Relationship:
 
+HealthHistory-HealthProfessional Relationship:
 The HealthHistory table and the HealthProfessional table have a many-to-one relationship.
 Multiple health history records can be associated with a single health professional.
 This relationship allows health professionals to access and manage health history records specific to their patients.
